@@ -31,6 +31,7 @@ class SpellCard(Card):
                 effect = f"Gives {self.cost} health to target"
             elif self.effect_type == EffectType.BUFF.value:
                 effect = f"Gives {self.name} to target"
+            game_state.update({"mana": game_state["mana"] - self.cost})
             return {'card_played': self.name,
                     'mana_used': self.cost,
                     'effect': effect}

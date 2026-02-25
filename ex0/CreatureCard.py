@@ -22,7 +22,6 @@ class CreatureCard(Card):
     def play(self, game_state: dict) -> dict:
         playable = self.is_playable(game_state.get("mana"))
         if playable:
-            print(f"Playable: {playable}")
             game_state.update({"mana": game_state["mana"] - self.cost})
             return {'card_played': self.name, 'mana_used': self.cost,
                     'effect': 'Creature summoned to battlefield'}

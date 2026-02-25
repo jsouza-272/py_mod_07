@@ -13,13 +13,13 @@ if __name__ == "__main__":
     print(card1.get_card_info())
 
     print("\nPlaying Fire Dragon with 6 mana available:")
+    print("Playable:", card1.is_playable(player1["mana"]))
     print("Play result", card1.play(player1))
 
     print(f"\nFire Dragon attacks {card2.name}:")
     print("Attack result:", card1.attack_target(card2))
 
     print("\nTesting insufficient mana (3 avaiable):")
-    play_result = card1.play(player2)
-    print(f"{play_result if play_result is not None else ''}")
+    print("Playable:", card1.is_playable(player2["mana"]))
 
-    print("Abstract pattern successfully demonstrated!")
+    print("\nAbstract pattern successfully demonstrated!")
