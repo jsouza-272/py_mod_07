@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     print("\nPlaying Fire Dragon with 6 mana available:")
     print("Playable:", card1.is_playable(player1["mana"]))
-    print("Play result", card1.play(player1))
+    print("Play result:", card1.play(player1))
 
     print(f"\nFire Dragon attacks {card2.name}:")
     print("Attack result:", card1.attack_target(card2))

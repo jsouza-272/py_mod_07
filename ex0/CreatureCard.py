@@ -25,7 +25,6 @@ class CreatureCard(Card):
             game_state.update({"mana": game_state["mana"] - self.cost})
             return {'card_played': self.name, 'mana_used': self.cost,
                     'effect': 'Creature summoned to battlefield'}
-        print(f"Playable: {playable}")
         return None
 
     def attack_target(self, target: 'CreatureCard') -> dict:
