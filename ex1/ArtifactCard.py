@@ -9,6 +9,9 @@ class ArtifactCard(Card):
         self.effect = effect
         self.type = "Artefact"
 
+        def __repr__(self):
+            return super().__repr__()
+
     def play(self, game_state: str) -> dict:
         if self.is_playable(game_state.get('mana')):
             game_state.update({"mana": game_state["mana"] - self.cost})

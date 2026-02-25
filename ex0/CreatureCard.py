@@ -9,6 +9,9 @@ class CreatureCard(Card):
         self.health = self.__set_health(health)
         self.type = "Creature"
 
+    def __repr__(self):
+        return super().__repr__()
+
     def __set_attack(self, attack) -> int:
         if attack < 0:
             raise ValueError

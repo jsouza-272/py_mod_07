@@ -16,6 +16,9 @@ class SpellCard(Card):
         self.effect_type = self.__set_effect_type(effect_type)
         self.type = "Spell"
 
+        def __repr__(self):
+            return super().__repr__()
+
     def __set_effect_type(self, effect_type: str):
         if effect_type in [e.value for e in EffectType]:
             return effect_type

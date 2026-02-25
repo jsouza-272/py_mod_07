@@ -16,6 +16,9 @@ class Card(ABC):
         self.cost = cost
         self.rarity = rarity
 
+    def __repr__(self):
+        return f"{self.name} ({self.cost})"
+
     def __set_rarity(self, rarity) -> str:
         if rarity in [r.value for r in Rarity]:
             return rarity
