@@ -5,8 +5,8 @@ from tools.card_generator import CardGenerator
 if __name__ == "__main__":
     card1 = CreatureCard(**CardGenerator().get_creature("Fire Dragon"))
     card2 = CreatureCard(**CardGenerator().get_creature("Goblin Warrior"))
-    player1 = {"mana": 6}
-    player2 = {"mana": 3}
+    player1 = {"mana": 6, "hand": [card1, card2], "battlefield": []}
+    player2 = {"mana": 3, "hand": [card1, card2], "battlefield": []}
 
     print("\n=== DataDeck Card Foundation ===")
     print("\nCreatureCard Info:")
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     print("Playable:", card1.is_playable(player1["mana"]))
     print("Play result:", card1.play(player1))
 
-    print(f"\nFire Dragon attacks {card2.name}:")
+    print(f"\nFire Dragon attacks {card2._name}:")
     print("Attack result:", card1.attack_target(card2))
 
     print("\nTesting insufficient mana (3 avaiable):")

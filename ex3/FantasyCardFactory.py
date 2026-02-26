@@ -1,7 +1,7 @@
 from .Cardfactory import CardFactory
 import random
 from ex0 import Card, CreatureCard
-from ex1 import SpellCard, ArtifactCard
+from ex1 import SpellCard, ArtifactCard, Deck
 
 
 class FantasyCardFactory(CardFactory):
@@ -66,20 +66,85 @@ class FantasyCardFactory(CardFactory):
             "durability": 7, "effect": "Permanent: +1 spell damage"}
     ]
 
+    _all = _artifacts + _creatures + _spells
+
     def create_creature(self, name_or_power: str | int | None = None) -> Card:
-        if name_or_power is None:
-            return CreatureCard(**random.choice(FantasyCardFactory._creatures))
+        if name_or_power in (creature.get('name')
+                             for creature in self._creatures):
+            creature = [creature for creature in self._creatures
+                        if name_or_power == creature.get('name')]
+            return CreatureCard(**creature[0])
+        elif name_or_power in (creature.get('attack')
+                               for creature in self._creatures):
+            creature = [creature for creature in self._creatures
+                        if name_or_power == creature.get('attack')]
+            return CreatureCard(**random.choice(creature))
+        elif name_or_power is None:
+            return CreatureCard(**random.choice(self._creatures))
+        else:
+            if isinstance(name_or_power, str):
+                print(f'Creature "{name_or_power}" not exist.')
+            else:
+                print(f'Creature with power {name_or_power} not exist.')
+            print('Creating a random creature...')
+            return CreatureCard(**random.choice(self._creatures))
 
     def create_spell(self, name_or_power: str | int | None = None) -> Card:
-        if name_or_power is None:
+        if name_or_power in (spell.get('name')
+                             for spell in self._spells):
+            spell = [spell for spell in self._spells
+                     if name_or_power == spell.get('name')]
+            return SpellCard(**spell[0])
+        elif name_or_power in (spell.get('cost')
+                               for spell in self._spells):
+            spell = [spell for spell in self._spells
+                     if name_or_power == spell.get('cost')]
+            return SpellCard(**random.choice(spell))
+        elif name_or_power is None:
             return SpellCard(**random.choice(FantasyCardFactory._spells))
+        else:
+            if isinstance(name_or_power, str):
+                print(f'Spell "{name_or_power}" not exist.')
+            else:
+                print(f'Spell with power {name_or_power} not exist.')
+            print('Creating a random spell...')
+            return SpellCard(**random.choice(self._spells))
 
     def create_artifact(self, name_or_power: str | int | None = None) -> Card:
-        if name_or_power is None:
-            return ArtifactCard(**random.choice(FantasyCardFactory._artifacts))
+        if name_or_power in (artifact.get('name')
+                             for artifact in self._artifacts):
+            artifact = [artifact for artifact in self._artifacts
+                        if name_or_power == artifact.get('name')]
+            return ArtifactCard(**artifact[0])
+        elif name_or_power is None:
+            return ArtifactCard(**random.choice(self._artifacts))
+        else:
+            if isinstance(name_or_power, str):
+                print(f'Artifact {name_or_power} not exist.')
+            else:
+                print('Artifact has no power.')
+            print('Creating a random artifact...')
+            return ArtifactCard(**random.choice(self._artifacts))
 
     def create_themed_deck(self, size: int) -> dict:
-        pass
+        if size < 2 or size > len(self._all):
+            print(f'Invalid deck size: {size} (max 20, min 10)')
+            return {}
+        deck = Deck()
+        cards = random.sample(self._all, k=size)
+        for card in cards:
+            if "attack" in card:
+                deck.add_card(CreatureCard(**card))
+            elif "effect" in card:
+                deck.add_card(ArtifactCard(**card))
+            else:
+                deck.add_card(SpellCard(**card))
+        return {'deck': deck}
 
     def get_supported_types(self) -> dict:
-        pass
+        return {'creatures': [creature.get('name')
+                              for creature in self._creatures],
+                'spells': [spell.get('name')
+                           for spell in self._spells],
+                'artifacts': [artifact.get('name')
+                              for artifact in self._artifacts]}

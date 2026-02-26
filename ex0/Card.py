@@ -12,12 +12,12 @@ class Rarity(Enum):
 class Card(ABC):
     def __init__(self, name: str,
                  cost: int, rarity: str) -> None:
-        self.name = name
-        self.cost = cost
-        self.rarity = rarity
+        self._name = name
+        self._cost = cost
+        self._rarity = rarity
 
     def __repr__(self):
-        return f"{self.name} ({self.cost})"
+        return f"{self._name} ({self._cost})"
 
     def __set_rarity(self, rarity) -> str:
         if rarity in [r.value for r in Rarity]:
@@ -29,9 +29,9 @@ class Card(ABC):
         pass
 
     def get_card_info(self) -> dict:
-        return {"name": self.name,
-                "cost": self.cost,
-                "rarity": self.rarity}
+        return {"name": self._name,
+                "cost": self._cost,
+                "rarity": self._rarity}
 
     def is_playable(self, available_mana: int) -> bool:
-        return available_mana >= self.cost
+        return available_mana >= self._cost

@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     cards = CardGenerator().generate_random_deck(3)
     deck = Deck()
-    game_state = {"mana": 50}
+    game_state = {"mana": 15, "hand": [], "battlefield": []}
 
     for card in cards:
         if "effect" in card:
@@ -25,9 +25,10 @@ if __name__ == "__main__":
     print("Deck stats:", deck.get_deck_status())
 
     print("\nDrawing and playing cards:")
-    for i in range(len(deck.cards)):
+    for i in range(len(deck._cards)):
         card = deck.draw_card()
-        print(f"\nDrew: {card.name} ({card.type})")
+        game_state["hand"].append(card)
+        print(f"\nDrew: {card._name} ({card._type})")
         print("Play result:", card.play(game_state))
 
     print("\nPolymorphism in action: "

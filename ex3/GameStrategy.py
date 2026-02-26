@@ -11,5 +11,5 @@ class GameStrategy(ABC):
         pass
 
     @abstractmethod
-    def prinoritize_target(self, avaliable_targets: list) -> list:
+    def prioritize_targets(self, avaliable_targets: list) -> list:
         pass
