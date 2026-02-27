@@ -15,28 +15,33 @@ class EliteCard(Card, Combatable, Magical):
         self._defense = defense
         self._mana = mana
 
+    def __repr__(self):
+        return f"'{self._name}'"
+
     def play(self, game_state: dict) -> dict:
         if self.is_playable(game_state.get('mana')):
             game_state.update({"mana": game_state["mana"] - self._cost})
             return {'card_played': self._name, 'mana_used': self._cost,
                     'effect': 'Elite summoned to battlefield'}
 
-    def attack(self, target: str) -> dict:
-        return {'attacker': self._name, 'target': target,
+    def attack(self, target: 'EliteCard') -> dict:
+        target.defend(self._damage)
+        return {'attacker': self._name, 'target': target._name,
                 'damage': self._damage, 'combat_type': self._combat_type}
 
     def defend(self, imcoming_damage) -> dict:
         damage = abs(self._defense - imcoming_damage)
+        self._health -= damage
         alive = True
-        if (self._health - damage) <= 0:
+        if self._health <= 0:
             alive = False
         return {'defender': self._name,
-                'damage_taken': abs(self._defense - imcoming_damage),
+                'damage_taken': damage,
                 'damage_blocked': self._defense,
                 'still_alive': alive}
 
     def get_combat_status(self) -> dict:
-        return {'health': self._health}
+        return {'health': self._health, 'mana': self._mana}
 
     def cast_spell(self, spell_name: str, targets: list) -> dict:
         self._mana -= self._cost

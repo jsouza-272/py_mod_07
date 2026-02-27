@@ -36,9 +36,10 @@ class GameEngine():
 
     def simulate_turn(self) -> dict:
         self._turn_simulated += 1
-        for i in range(2):
+        while len(self.player['hand']) > 1:
             self.player['hand'][0].play(self.player)
-        self.enemy['hand'][0].play(self.enemy)
+        while len(self.enemy['hand']) > 1:
+            self.enemy['hand'][0].play(self.enemy)
 
         self.strategy.prioritize_targets(self.enemy.get('battlefield'))
 
