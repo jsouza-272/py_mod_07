@@ -29,15 +29,3 @@ if __name__ == "__main__":
 
     print("\n== Tournament Platform Successfully Deployed! ===")
     print("All abstract patterns working together harmoniously!")
-
-    # 100 matches
-    # for i in range(100):
-    #     c1, c2 = plataform.get_two_random_cards()
-    #     plataform.create_match(c1._id, c2._id)
-    #     c1.restore()
-    #     c2.restore()
-    # print("\nTournament Leaderboard:")
-    # i = 1
-    # for _ in plataform.get_leaderboard():
-    #     print(f"{i}.", _)
-    #     i += 1

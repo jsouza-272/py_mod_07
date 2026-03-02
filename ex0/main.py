@@ -9,6 +9,8 @@ if __name__ == "__main__":
     player2 = {"mana": 3, "hand": [card1, card2], "battlefield": []}
 
     print("\n=== DataDeck Card Foundation ===")
+    print("\nTesting Abstract Base Class Design:")
+
     print("\nCreatureCard Info:")
     print(card1.get_card_info())
 
