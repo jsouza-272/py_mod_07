@@ -1,7 +1,6 @@
-from ex0 import Card
-from ex0.Card import Rarity
-from .Combatable import Combatable
 from .Magical import Magical
+from ex0.Card import Card, Rarity
+from .Combatable import Combatable
 
 
 class EliteCard(Card, Combatable, Magical):

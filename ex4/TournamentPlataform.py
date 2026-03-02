@@ -1,5 +1,5 @@
-from .TournamentCard import TournamentCard
 import random
+from .TournamentCard import TournamentCard
 
 
 class TournamentPlataform():

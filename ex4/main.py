@@ -1,5 +1,5 @@
 from .TournamentCard import TournamentCard
-from . TournamentPlataform import TournamentPlataform
+from .TournamentPlataform import TournamentPlataform
 
 if __name__ == "__main__":
     card1 = TournamentCard(name='Fire Dragon', cost=6, rarity="Legendary",

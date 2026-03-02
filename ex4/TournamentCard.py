@@ -1,6 +1,6 @@
+from ex0.Card import Card
 from .Rankable import Rankable
-from ex0 import Card
-from ex2 import Combatable
+from ex2.Combatable import Combatable
 
 
 class TournamentCard(Card, Combatable, Rankable):

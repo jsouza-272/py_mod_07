@@ -1,4 +1,4 @@
-from ex2 import EliteCard
+from .EliteCard import EliteCard
 
 
 if __name__ == "__main__":

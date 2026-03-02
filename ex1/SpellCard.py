@@ -1,5 +1,5 @@
-from ex0.Card import Card
 from enum import Enum
+from ex0.Card import Card
 
 
 class EffectType(Enum):

@@ -1,6 +1,6 @@
+from ex1.Deck import Deck
 from .Cardfactory import CardFactory
 from .GameStrategy import GameStrategy
-from ex1 import Deck
 
 
 class GameEngine():

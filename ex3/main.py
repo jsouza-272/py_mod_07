@@ -1,6 +1,6 @@
+from .GameEngine import GameEngine
 from .AggressiveStrategy import AggressiveStrategy
 from .FantasyCardFactory import FantasyCardFactory
-from .GameEngine import GameEngine
 
 
 def rrr(x: dict):

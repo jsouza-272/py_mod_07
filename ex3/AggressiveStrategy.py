@@ -1,6 +1,6 @@
+from ex1.SpellCard import SpellCard
 from .GameStrategy import GameStrategy
-from ex0 import CreatureCard
-from ex1 import SpellCard
+from ex0.CreatureCard import CreatureCard
 
 
 class AggressiveStrategy(GameStrategy):

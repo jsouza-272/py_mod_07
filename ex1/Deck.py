@@ -1,6 +1,8 @@
-from ex0 import Card, CreatureCard
-from ex1 import SpellCard, ArtifactCard
 import random
+from ex0.Card import Card
+from ex1.SpellCard import SpellCard
+from ex0.CreatureCard import CreatureCard
+from ex1.ArtifactCard import ArtifactCard
 
 
 class Deck():

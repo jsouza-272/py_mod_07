@@ -1,8 +1,8 @@
 from .Deck import Deck
-from ex0 import CreatureCard
 from .SpellCard import SpellCard
 from .ArtifactCard import ArtifactCard
-from tools import CardGenerator
+from ex0.CreatureCard import CreatureCard
+from tools.card_generator import CardGenerator
 
 if __name__ == "__main__":
     print("\n=== DataDeck Deck Builder ===")

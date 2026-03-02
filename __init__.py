@@ -1,8 +1,8 @@
 from .ex0 import Card, CreatureCard
 from .ex1 import SpellCard, ArtifactCard, Deck
 from .ex2 import EliteCard, Combatable, Magical
-from .ex3 import GameEngine, AggressiveStrategy, GameStrategy
 from .ex3 import CardFactory, FantasyCardFactory
+from .ex3 import GameEngine, AggressiveStrategy, GameStrategy
 from .ex4 import TournamentCard, Rankable, TournamentPlataform
 
 
@@ -11,6 +11,6 @@ __author__ = "jsouza"
 __all__ = [Card, CreatureCard,
            SpellCard, ArtifactCard, Deck,
            EliteCard, Combatable, Magical,
-           GameEngine, AggressiveStrategy, GameStrategy,
            CardFactory, FantasyCardFactory,
+           GameEngine, AggressiveStrategy, GameStrategy,
            TournamentCard, Rankable, TournamentPlataform]

@@ -1,7 +1,10 @@
-from .Cardfactory import CardFactory
 import random
-from ex0 import Card, CreatureCard
-from ex1 import SpellCard, ArtifactCard, Deck
+from ex1.Deck import Deck
+from ex0.Card import Card
+from ex1.SpellCard import SpellCard
+from .Cardfactory import CardFactory
+from ex0.CreatureCard import CreatureCard
+from ex1.ArtifactCard import ArtifactCard
 
 
 class FantasyCardFactory(CardFactory):
