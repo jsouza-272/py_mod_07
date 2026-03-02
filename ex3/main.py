@@ -3,10 +3,6 @@ from .AggressiveStrategy import AggressiveStrategy
 from .FantasyCardFactory import FantasyCardFactory
 
 
-def rrr(x: dict):
-    x['home'] = 3030303
-
-
 if __name__ == "__main__":
     print("\n=== DataDeck Game Engine ===")
 
