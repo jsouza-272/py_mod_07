@@ -43,7 +43,11 @@ class TournamentPlataform():
                 self._ids_registred.index(card1_id)]
             card2 = self._cards_regitred[
                 self._ids_registred.index(card2_id)]
-            print(card1, card2)
+
+            if (card1._defense == card2._attack
+                    and card2._defense == card1._attack):
+                return {'draw': 'endless battle'}
+
             while (card1.get_combat_status()['alive']
                     and card2.get_combat_status()['alive']):
                 card1.attack(card2)
@@ -61,6 +65,7 @@ class TournamentPlataform():
             return {'winner': winner, 'loser': loser,
                     'winner_rating': winner._rating,
                     'loser_rating': loser._rating}
+
         return {'error': "Ids not found", 'ids avaiable': self._ids_registred}
 
     def get_leaderboard(self) -> list:
