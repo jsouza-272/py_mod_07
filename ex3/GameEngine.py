@@ -10,9 +10,9 @@ class GameEngine():
         self._cards_created = 0
         self._factory = None
         self.strategy = None
-        self.player = {'hand': [], 'mana': 10, 'battlefield': [],
+        self.player = {'hand': [], 'mana': 10000, 'battlefield': [],
                        'graveyard': [], 'pile': []}
-        self.enemy = {'hand': [], 'mana': 10, 'battlefield': [],
+        self.enemy = {'hand': [], 'mana': 10000, 'battlefield': [],
                       'graveyard': [], 'pile': Deck}
         self._game_state = {'player': self.player, 'enemy': self.enemy}
 
