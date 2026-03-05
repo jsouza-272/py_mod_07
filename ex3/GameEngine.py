@@ -10,9 +10,9 @@ class GameEngine():
         self._cards_created = 0
         self._factory = None
         self.strategy = None
-        self.player = {'hand': [], 'mana': 10000, 'battlefield': [],
+        self.player = {'hand': [], 'mana': 8, 'battlefield': [],
                        'graveyard': [], 'pile': []}
-        self.enemy = {'hand': [], 'mana': 10000, 'battlefield': [],
+        self.enemy = {'hand': [], 'mana': 8, 'battlefield': [],
                       'graveyard': [], 'pile': Deck}
         self._game_state = {'player': self.player, 'enemy': self.enemy}
 
@@ -36,9 +36,11 @@ class GameEngine():
 
     def simulate_turn(self) -> dict:
         self._turn_simulated += 1
-        while len(self.player['hand']) > 1:
+        while (len(self.player['hand']) > 1
+               and self.player['hand'][0].is_playable(self.player['mana'])):
             self.player['hand'][0].play(self.player)
-        while len(self.enemy['hand']) >= 1:
+        while (len(self.enemy['hand']) >= 1
+               and self.enemy['hand'][0].is_playable(self.enemy['mana'])):
             self.enemy['hand'][0].play(self.enemy)
 
         self.strategy.prioritize_targets(self.enemy.get('battlefield'))
